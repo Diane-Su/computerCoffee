@@ -351,16 +351,15 @@ document.addEventListener('DOMContentLoaded', function () {
         function generateEnemy() {
             const currentTime = new Date().getTime();
             const elapsedTime = (currentTime - startTime) / 1000;  // 當遊戲運行時間，單位：秒
-
             const statusBarHeight = document.querySelector('.statusBar').offsetHeight;  // 獲取 statusBar 的高度
-            const obstacleHeight = 50;  // 假設障礙物的高度為50px，可以根據需要調整
+            const obstacleHeight = 50;  // 假設障礙物的高度為50px，您可以根據需要調整
             const maxTopPosition = gameArea.offsetHeight - obstacleHeight - statusBarHeight;
-
             const enemyImage = document.createElement('img');
             enemyImage.src = './asset/obstacle/devil/walk/enemy_walk.gif';
             enemyImage.style.position = 'absolute';
             enemyImage.style.top = `${Math.random() * (maxTopPosition - statusBarHeight) + statusBarHeight}px`;  // 保證敵人出現在 statusBar 下面且在障礙物的上面
-            enemyImage.style.left = '945px';
+            const gameWidth = gameArea.offsetWidth;  // 獲取遊戲視窗的寬度
+            enemyImage.style.left = `${gameWidth}px`;
             gameArea.appendChild(enemyImage);
             enemies.push(enemyImage);
             let randomEnemyTime;
@@ -369,11 +368,15 @@ document.addEventListener('DOMContentLoaded', function () {
             if (elapsedTime < 5) {
                 randomEnemyTime = 8000;  // 8秒
             } else {
-                randomEnemyTime = 7000 + Math.random() * 3000;  // 7秒到10秒之間
+                randomEnemyTime = 7000 + Math.random() * 3000;  // 7秒到10秒之间
             }
+
             clearInterval(generateEnemyInterval);
             generateEnemyInterval = setInterval(generateEnemy, randomEnemyTime);
         }
+
+        clearInterval(generateEnemyInterval);
+        generateEnemyInterval = setInterval(generateEnemy, 10000);  // 初始每10秒生成新的怪物
 
         // 怪物動畫的邏輯
         clearInterval(enemyMoveInterval);
