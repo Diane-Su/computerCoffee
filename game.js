@@ -167,8 +167,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 const bubbleImage = document.createElement('img');
                 bubbleImage.src = './asset/coffee.png';
                 bubbleImage.style.position = 'absolute';
-                bubbleImage.style.bottom = `${parseInt(playerImage.style.bottom) + 25}px`;
-                bubbleImage.style.left = `${parseInt(playerImage.style.left) + 50}px`; // 基於玩家位置
+                bubbleImage.style.bottom = `${parseInt(playerImage.style.bottom) + 60}px`;
+                const gameWidth = gameArea.offsetWidth;  // 獲取遊戲視窗的寬度
+                bubbleImage.style.left = `${parseInt(playerImage.style.left) + 80}px`; // 基於玩家位置
                 gameArea.appendChild(bubbleImage);
                 bubbles.push(bubbleImage);
                 isAttacking = true;
