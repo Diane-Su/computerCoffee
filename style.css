@@ -106,16 +106,16 @@ body {
 
 .retryButton {
     display: none;
-    /* 新增這行，初始狀態隱藏 */
     position: absolute;
-    top: 60%;
-    /* 將圖片定位在 "Game Over" 文字下方 */
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
     transition: 0.3s;
     width: 150px;
     height: auto;
+    z-index: 9999;
+    /* 新增這行，確保按鈕在最上層 */
 }
 
 .retryButton:hover {

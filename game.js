@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function retryGame() {
         // 重新開始遊戲邏輯...
         // 清除所有 setInterval 和 setTimeout
-        retryButton.style.display = 'none'; 
+        retryButton.style.display = 'none';
         clearInterval(backgroundScrollInterval);
         clearInterval(obstacleMoveInterval);
         clearInterval(this.runningAnimation);
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function gameOver() {
         document.querySelector('.gameOver').classList.remove('hidden');
-        retryButton.style.display = 'block'; // 遊戲結束時顯示重試按鈕
+        //retryButton.style.display = 'block';
         // 停止所有的動畫和生成障礙物或怪物的計時器
         clearInterval(generateObstacleInterval);
         clearInterval(obstacleMoveInterval);
