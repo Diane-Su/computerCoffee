@@ -289,8 +289,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const obstacleImage = document.createElement('img');
             obstacleImage.src = './asset/obstacle/rock2.png';
             obstacleImage.style.position = 'absolute';
-            obstacleImage.style.bottom = '42px';
-            obstacleImage.style.left = '945px'; // 從右側開始
+            obstacleImage.style.bottom = '20px';  // 設定障礙物離地面為20px
+            const gameWidth = gameArea.offsetWidth;  // 獲取遊戲視窗的寬度
+            obstacleImage.style.left = `${gameWidth}px`;  // 設定障礙物的left為遊戲視窗的寬度
             gameArea.appendChild(obstacleImage);
             obstacles.push(obstacleImage);
             obstacleImage.isHit = false;
@@ -302,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         clearInterval(generateObstacleInterval);  // 清除現有的生成障礙物的 setInterval
-        generateObstacleInterval = setInterval(generateObstacle, 8000);  // 初始每8秒生成新的障礙物
+        generateObstacleInterval = setInterval(generateObstacle, 8000);  // 初始每8秒生成新的障礙物                
 
         clearInterval(obstacleMoveInterval);
         obstacleMoveInterval = setInterval(function () {
@@ -350,33 +351,29 @@ document.addEventListener('DOMContentLoaded', function () {
         function generateEnemy() {
             const currentTime = new Date().getTime();
             const elapsedTime = (currentTime - startTime) / 1000;  // 當遊戲運行時間，單位：秒
+
+            const statusBarHeight = document.querySelector('.statusBar').offsetHeight;  // 獲取 statusBar 的高度
+            const obstacleHeight = 50;  // 假設障礙物的高度為50px，可以根據需要調整
+            const maxTopPosition = gameArea.offsetHeight - obstacleHeight - statusBarHeight;
+
             const enemyImage = document.createElement('img');
             enemyImage.src = './asset/obstacle/devil/walk/enemy_walk.gif';
             enemyImage.style.position = 'absolute';
-            
-            const gameHeight = gameArea.offsetHeight;
-            const statusBarHeight = 90;  // `.statusBar` 的高度
-            const obstacleHeight = 60;  // 考慮障礙物的高度，您可以根據實際情況調整此值
-            
-            const maxEnemyTop = gameHeight - statusBarHeight - obstacleHeight;
-            const minEnemyTop = statusBarHeight;  // 使怪物不會出現在 statusBar 上方
-            enemyImage.style.top = `${Math.random() * (maxEnemyTop - minEnemyTop) + minEnemyTop}px`;
-            
+            enemyImage.style.top = `${Math.random() * (maxTopPosition - statusBarHeight) + statusBarHeight}px`;  // 保證敵人出現在 statusBar 下面且在障礙物的上面
             enemyImage.style.left = '945px';
             gameArea.appendChild(enemyImage);
             enemies.push(enemyImage);
             let randomEnemyTime;
             enemyImage.isHit = false;
-        
+
             if (elapsedTime < 5) {
                 randomEnemyTime = 8000;  // 8秒
             } else {
-                randomEnemyTime = 7000 + Math.random() * 3000;  // 7秒到10秒之间
+                randomEnemyTime = 7000 + Math.random() * 3000;  // 7秒到10秒之間
             }
-        }        
-
-        clearInterval(generateEnemyInterval);
-        generateEnemyInterval = setInterval(generateEnemy, 10000);  // 初始每10秒生成新的怪物
+            clearInterval(generateEnemyInterval);
+            generateEnemyInterval = setInterval(generateEnemy, randomEnemyTime);
+        }
 
         // 怪物動畫的邏輯
         clearInterval(enemyMoveInterval);
