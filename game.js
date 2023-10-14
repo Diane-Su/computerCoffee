@@ -167,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const bubbleImage = document.createElement('img');
                 bubbleImage.src = './asset/coffee.png';
                 bubbleImage.style.position = 'absolute';
-                const playerHeight = playerImage.getBoundingClientRect().height;
                 bubbleImage.style.bottom = `${parseInt(playerImage.style.bottom) + 25}px`;
                 bubbleImage.style.left = `${parseInt(playerImage.style.left) + 50}px`; // 基於玩家位置
                 gameArea.appendChild(bubbleImage);
@@ -214,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (isGameOver) {
                 return;
             }    
-            
+
             if (e.key === ' ' && isAttacking) {
                 isAttacking = false;
                 clearInterval(attackAnimation);
