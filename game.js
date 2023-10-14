@@ -86,13 +86,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const jumpSpeed = 4;
         let jumpAnimation;
         let fallAnimation;
-        let runningAnimation;
+        this.runningAnimation;
         let isColliding = false; // 新增這行
         let playerAnimationFrame = 1;
 
         function startRunningAnimation() {
-            clearInterval(runningAnimation);  // 確保停止任何現有的跑步動畫
-            runningAnimation = setInterval(function () {
+            clearInterval(this.runningAnimation);  // 確保停止任何現有的跑步動畫
+            this.runningAnimation = setInterval(function () {
                 playerAnimationFrame++;
                 if (playerAnimationFrame > 3) {
                     playerAnimationFrame = 1;
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         document.addEventListener('keydown', function (e) {
             if (e.key === 'ArrowUp' && !isColliding) {
-                clearInterval(runningAnimation); // 停止跑步動畫
+                clearInterval(this.runningAnimation); // 停止跑步動畫
                 clearInterval(jumpAnimation); // 停止之前的跳躍動畫
                 clearInterval(fallAnimation); // 停止之前的下落動畫
 
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 gameArea.appendChild(bubbleImage);
                 bubbles.push(bubbleImage);
                 isAttacking = true;
-                clearInterval(runningAnimation);
+                clearInterval(this.runningAnimation);
                 attackAnimationFrame = 1;
                 playerImage.src = `./asset/player/player.png`;
 
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (e.key === ' ' && !isAttacking && !isColliding) {
                 isAttacking = true;
-                clearInterval(runningAnimation);
+                clearInterval(this.runningAnimation);
                 attackAnimationFrame = 1;
                 playerImage.src = `./asset/player/player.png`;
 
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     isColliding = true;
                     playerImage.style.filter = 'brightness(0.5)'; // 讓玩家圖片的顏色變深
-                    clearInterval(runningAnimation);
+                    clearInterval(this.runningAnimation);
                     clearTimeout(runningAnimationTimeout);
                     hideHeart(); // 隱藏一顆愛心
                     obstacle.isHit = true; // 標記該障礙物已被撞擊
@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     isColliding = true;
                     playerImage.style.filter = 'brightness(0.5)'; // 讓玩家圖片的顏色變深
-                    clearInterval(runningAnimation);
+                    clearInterval(this.runningAnimation);
                     clearTimeout(runningAnimationTimeout);
                     hideHeart(); // 隱藏一顆愛心
                     enemy.isHit = true; // 標記該怪物已被撞擊
@@ -470,7 +470,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // 清除所有 setInterval 和 setTimeout
         clearInterval(backgroundScrollInterval);
         clearInterval(obstacleMoveInterval);
-        clearInterval(runningAnimation);
+        clearInterval(this.runningAnimation);
         clearTimeout(runningAnimationTimeout);
         clearInterval(enemyMoveInterval);
         // 清除生成元素的 setInterval
@@ -486,7 +486,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clearInterval(obstacleMoveInterval);
         clearInterval(generateEnemyInterval);
         clearInterval(enemyMoveInterval);
-        clearInterval(runningAnimation);
+        clearInterval(this.runningAnimation);
         clearTimeout(runningAnimationTimeout);
         const gameOverDiv = document.querySelector(".gameOver");
         gameOverDiv.innerHTML = `Game Over`;
