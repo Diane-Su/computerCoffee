@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const gameArea = document.getElementById('gameArea');
     const startButton = document.getElementById('startGame');
     const retryButton = document.getElementById("retryGame");
-
+    let isGameOver = false;  // 在遊戲開始前初始化
     let scrollSpeed = 2;  // 可以調整這個數值來控制背景滾動的速度
     let enemyScrollSpeed = 18;  // 控制怪物的滾動速度
     let boosterpackSpeed = 4;  // 我假設這裡是你原本的滾動速度，你可以提高此值以加快速度
@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function startGame() {
+        isGameOver = false;
         startButton.style.display = 'none';
         const bg1 = document.createElement('img');
         const bg2 = document.createElement('img');
@@ -436,11 +437,16 @@ document.addEventListener('DOMContentLoaded', function () {
         let generatePowerUpInterval; // 儲存生成補充包的setInterval的引用
 
         function generatePowerUp() {
+            const statusBarHeight = document.querySelector('.statusBar').offsetHeight;  // 獲取 statusBar 的高度
+            const obstacleHeight = 50;  // 假設障礙物的高度為50px，您可以根據需要調整
+            const maxTopPosition = gameArea.offsetHeight - obstacleHeight - statusBarHeight;
+
             const powerUpImage = document.createElement('img');
             powerUpImage.src = './asset/buff/bunny.png';  // 改成單張圖片的路徑
             powerUpImage.style.position = 'absolute';
-            powerUpImage.style.top = `${Math.random() * (200 - 96 - 30) + 30}px`;  //30~200px
-            powerUpImage.style.left = '945px'; // 從右側開始
+            powerUpImage.style.top = `${Math.random() * (maxTopPosition - statusBarHeight) + statusBarHeight}px`;  // 保證補充包出現在 statusBar 下面且在障礙物的上面
+            const gameWidth = gameArea.offsetWidth;  // 獲取遊戲視窗的寬度
+            powerUpImage.style.left = `${gameWidth}px`; // 從右側開始
             gameArea.appendChild(powerUpImage);
             powerUps.push(powerUpImage);
 
@@ -493,13 +499,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function gameOver() {
+        isGameOver = true;  // 遊戲結束時設為 true
         document.querySelector('.gameOver').classList.remove('hidden');
-        //retryButton.style.display = 'block';
         // 停止所有的動畫和生成障礙物或怪物的計時器
         clearInterval(generateObstacleInterval);
         clearInterval(obstacleMoveInterval);
         clearInterval(generateEnemyInterval);
         clearInterval(enemyMoveInterval);
+        clearInterval(generatePowerUpInterval);
         clearInterval(this.runningAnimation);
         clearTimeout(this.runningAnimationTimeout);
         const gameOverDiv = document.querySelector(".gameOver");
