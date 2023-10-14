@@ -114,6 +114,10 @@ document.addEventListener('DOMContentLoaded', function () {
         let isAttacking = false;
 
         document.addEventListener('keydown', function (e) {
+            if (isGameOver) {
+                return;
+            }    
+        
             if (e.key === 'ArrowUp' && !isColliding) {
                 clearInterval(this.runningAnimation); // 停止跑步動畫
                 clearInterval(jumpAnimation); // 停止之前的跳躍動畫
@@ -151,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             }
                         }, 16);
                     }
-                }, 16);
+                }, 16);            
             }
 
             if (e.key === ' ' && !isAttacking && !isColliding) {
@@ -207,6 +211,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         document.addEventListener('keyup', function (e) {
+            if (isGameOver) {
+                return;
+            }    
+            
             if (e.key === ' ' && isAttacking) {
                 isAttacking = false;
                 clearInterval(attackAnimation);
