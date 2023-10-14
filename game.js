@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const gameArea = document.getElementById('gameArea');
     const startButton = document.getElementById('startGame');
-    const retryButton = document.getElementById('retryGame');
+    const retryButton = document.getElementById("retryGame");
 
     let scrollSpeed = 2;  // 可以調整這個數值來控制背景滾動的速度
     let enemyScrollSpeed = 18;  // 控制怪物的滾動速度
@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let playerScore = 0;
         let powerUpCount = 0;
         musicElements[currentMusicIndex].play();
+        retryButton.style.display = 'none'; // 在遊戲開始時隱藏重試按鈕
 
         clearInterval(backgroundScrollInterval);
         backgroundScrollInterval = setInterval(function () {
@@ -468,6 +469,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function retryGame() {
         // 重新開始遊戲邏輯...
         // 清除所有 setInterval 和 setTimeout
+        retryButton.style.display = 'none'; 
         clearInterval(backgroundScrollInterval);
         clearInterval(obstacleMoveInterval);
         clearInterval(this.runningAnimation);
@@ -481,6 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function gameOver() {
         document.querySelector('.gameOver').classList.remove('hidden');
+        retryButton.style.display = 'block'; // 遊戲結束時顯示重試按鈕
         // 停止所有的動畫和生成障礙物或怪物的計時器
         clearInterval(generateObstacleInterval);
         clearInterval(obstacleMoveInterval);

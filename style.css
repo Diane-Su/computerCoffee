@@ -105,6 +105,8 @@ body {
 }
 
 .retryButton {
+    display: none;
+    /* 新增這行，初始狀態隱藏 */
     position: absolute;
     top: 60%;
     /* 將圖片定位在 "Game Over" 文字下方 */
