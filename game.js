@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const obstacles = []; // 存儲當前的障礙物
         const BUFFER = 10 // 增加或減少此值以調整與障礙物的碰撞緩衝區大小
         const MBUFFER = 70; // 增加或減少此值以調整與怪物的碰撞緩衝區大小
-        let runningAnimationTimeout;
+        this.runningAnimationTimeout;
 
         function generateObstacle() {
             const obstacleImage = document.createElement('img');
@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     isColliding = true;
                     playerImage.style.filter = 'brightness(0.5)'; // 讓玩家圖片的顏色變深
                     clearInterval(this.runningAnimation);
-                    clearTimeout(runningAnimationTimeout);
+                    clearTimeout(this.runningAnimationTimeout);
                     hideHeart(); // 隱藏一顆愛心
                     obstacle.isHit = true; // 標記該障礙物已被撞擊
 
@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     isColliding = true;
                     playerImage.style.filter = 'brightness(0.5)'; // 讓玩家圖片的顏色變深
                     clearInterval(this.runningAnimation);
-                    clearTimeout(runningAnimationTimeout);
+                    clearTimeout(this.runningAnimationTimeout);
                     hideHeart(); // 隱藏一顆愛心
                     enemy.isHit = true; // 標記該怪物已被撞擊
 
@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clearInterval(backgroundScrollInterval);
         clearInterval(obstacleMoveInterval);
         clearInterval(this.runningAnimation);
-        clearTimeout(runningAnimationTimeout);
+        clearTimeout(this.runningAnimationTimeout);
         clearInterval(enemyMoveInterval);
         // 清除生成元素的 setInterval
         clearInterval(generateObstacleInterval);
@@ -487,7 +487,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clearInterval(generateEnemyInterval);
         clearInterval(enemyMoveInterval);
         clearInterval(this.runningAnimation);
-        clearTimeout(runningAnimationTimeout);
+        clearTimeout(this.runningAnimationTimeout);
         const gameOverDiv = document.querySelector(".gameOver");
         gameOverDiv.innerHTML = `Game Over`;
     }
