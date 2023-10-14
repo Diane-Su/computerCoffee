@@ -11,6 +11,9 @@ body {
 .gameWrapper {
     border: 1px solid black;
     position: relative;
+    width: 90vw;
+    height: calc(90vw * 0.39);
+    /* 370/945 */
 }
 
 .statusBar {
@@ -19,7 +22,7 @@ body {
     left: 0;
     right: 0;
     width: 100%;
-    height: 70px;
+    height: 90px;
     background-image: url('asset/bg/gui.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,30 +37,28 @@ body {
 
 .hearts {
     display: flex;
-    margin-top: 20px;
-    margin-left: 20px;
-    width: 130px;
+    margin-top: 2vw;
+    margin-left: 1vw;
+    width: 13.7vw; /* 假設愛心的寬度是遊戲畫面寬度的某個比例 */
     justify-content: space-evenly;
     align-items: start;
 }
 
 .heart {
-    width: 30px;
-    /* 根據 heart.png 的實際大小調整 */
-    height: 30px;
-    /* 根據 heart.png 的實際大小調整 */
+    width: 3vw; /* 將愛心的寬度設定為視窗寬度的某個比例 */
+    height: 3vw; /* 將愛心的高度設定為視窗寬度的某個比例 */
     background-image: url('asset/heart.png');
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
-    /* 設定愛心之間的間距 */
 }
 
 .score {
     position: absolute;
-    top: 20px;
-    right: 440px;
-    font-size: 20px;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 使其完全居中 */
+    font-size: 2vw;
     color: white;
     z-index: 11;
     /* 確保在 statusBar 的上面 */
@@ -65,18 +66,18 @@ body {
 
 .powerUpCount {
     position: absolute;
-    top: 20px;
-    right: 40px;
+    top: 33%;
+    right: 4%;
     /* 或其他合適的位置 */
-    font-size: 20px;
+    font-size: 2vw; /* 調整這個數值 */
     color: white;
     z-index: 11;
     /* 確保在 statusBar 的上面 */
 }
 
 .gameArea {
-    width: 945px;
-    height: 370px;
+    width: 100%;
+    height: 100%;
     position: relative;
     overflow: hidden;
 }

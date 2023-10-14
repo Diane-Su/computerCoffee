@@ -53,13 +53,18 @@ document.addEventListener('DOMContentLoaded', function () {
         bg1.style.top = '0';
         bg1.style.left = '0';
         bg2.style.top = '0';
-        bg2.style.left = '945px'; // 初始化位置為右邊
+        bg1.style.width = '100%';  // 設定寬度為 100%
+        bg1.style.height = 'auto'; // 自動調整高度
+        bg2.style.width = '100%';  // 設定寬度為 100%
+        bg2.style.height = 'auto'; // 自動調整高度
         gameArea.appendChild(bg1);
         gameArea.appendChild(bg2);
         let playerScore = 0;
         let powerUpCount = 0;
         musicElements[currentMusicIndex].play();
         retryButton.style.display = 'none'; // 在遊戲開始時隱藏重試按鈕
+        const gameWidth = gameArea.offsetWidth;
+        bg2.style.left = `${gameWidth}px`;
 
         clearInterval(backgroundScrollInterval);
         backgroundScrollInterval = setInterval(function () {
@@ -68,12 +73,11 @@ document.addEventListener('DOMContentLoaded', function () {
             bg1.style.left = `${newLeft1}px`;
             bg2.style.left = `${newLeft2}px`;
 
-            // 重置背景位置，保持滾動連續
-            if (newLeft1 <= -945) {
-                bg1.style.left = `${newLeft2 + 945}px`;  // 945 * 2
+            if (newLeft1 <= -gameWidth) {
+                bg1.style.left = `${newLeft2 + gameWidth}px`;
             }
-            if (newLeft2 <= -945) {
-                bg2.style.left = `${newLeft1 + 945}px`;  // 945 * 2
+            if (newLeft2 <= -gameWidth) {
+                bg2.style.left = `${newLeft1 + gameWidth}px`;
             }
         }, 16);
 
@@ -82,6 +86,8 @@ document.addEventListener('DOMContentLoaded', function () {
         playerImage.style.position = 'absolute';
         playerImage.style.bottom = '40px';
         playerImage.style.left = '10px';
+        playerImage.style.width = '10%';  // 設定寬度為 15% 來代表玩家的寬度 (這是一個示例值，您可以根據需要調整)
+        playerImage.style.height = '40%'; // 保持圖片的寬高比
         gameArea.appendChild(playerImage);
         let jumpHeight = 0;
         const jumpSpeed = 4;
@@ -347,22 +353,27 @@ document.addEventListener('DOMContentLoaded', function () {
             const enemyImage = document.createElement('img');
             enemyImage.src = './asset/obstacle/devil/walk/enemy_walk.gif';
             enemyImage.style.position = 'absolute';
-            enemyImage.style.top = `${Math.random() * (200 - 170 - 60) + 60}px`; // 在60px到200px之間
+            
+            const gameHeight = gameArea.offsetHeight;
+            const statusBarHeight = 90;  // `.statusBar` 的高度
+            const obstacleHeight = 60;  // 考慮障礙物的高度，您可以根據實際情況調整此值
+            
+            const maxEnemyTop = gameHeight - statusBarHeight - obstacleHeight;
+            const minEnemyTop = statusBarHeight;  // 使怪物不會出現在 statusBar 上方
+            enemyImage.style.top = `${Math.random() * (maxEnemyTop - minEnemyTop) + minEnemyTop}px`;
+            
             enemyImage.style.left = '945px';
             gameArea.appendChild(enemyImage);
             enemies.push(enemyImage);
             let randomEnemyTime;
             enemyImage.isHit = false;
-
+        
             if (elapsedTime < 5) {
                 randomEnemyTime = 8000;  // 8秒
             } else {
                 randomEnemyTime = 7000 + Math.random() * 3000;  // 7秒到10秒之间
             }
-
-            clearInterval(generateEnemyInterval);
-            generateEnemyInterval = setInterval(generateEnemy, randomEnemyTime);
-        }
+        }        
 
         clearInterval(generateEnemyInterval);
         generateEnemyInterval = setInterval(generateEnemy, 10000);  // 初始每10秒生成新的怪物
