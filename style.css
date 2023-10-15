@@ -88,11 +88,11 @@ body {
 
 .score {
     position: absolute;
-    top: 55%;
+    top: 28%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* 使其完全居中 */
-    font-size: 2vw;
+    font-size: 25px;
     color: white;
     z-index: 11;
     /* 確保在 statusBar 的上面 */
@@ -100,10 +100,10 @@ body {
 
 .powerUpCount {
     position: absolute;
-    top: 33%;
-    right: 4%;
+    top: 10%;
+    right: 3.5%;
     /* 或其他合適的位置 */
-    font-size: 2vw;
+    font-size: 25px;
     /* 調整這個數值 */
     color: white;
     z-index: 11;
