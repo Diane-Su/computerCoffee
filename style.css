@@ -75,7 +75,7 @@ body {
     display: flex;
     justify-content: space-between;
     /* width: 100%; */
-    width: calc(100% - 30px);
+    width: calc(100% - 38px);
 }
 
 .hearts {
@@ -102,7 +102,7 @@ body {
 
 .score {
     top: 28%;
-    font-size: 25px;
+    font-size: 23px;
     color: white;
     z-index: 11;
 }
@@ -110,7 +110,7 @@ body {
 .powerUpCount {
     top: 10%;
     right: 2%;
-    font-size: 25px;
+    font-size: 23px;
     color: white;
     z-index: 11;
 }
