@@ -103,6 +103,7 @@ body {
 .score {
     top: 28%;
     font-size: 23px;
+    padding-top: 8px;
     color: white;
     z-index: 11;
 }
@@ -110,6 +111,7 @@ body {
 .powerUpCount {
     top: 10%;
     right: 2%;
+    padding-top: 8px;
     font-size: 23px;
     color: white;
     z-index: 11;
