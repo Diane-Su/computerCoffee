@@ -11,42 +11,75 @@ body {
 .gameWrapper {
     border: 1px solid black;
     position: relative;
-    width: 90vw;
-    height: calc(90vw * 0.39);
+    width: 100%;
+    max-width: 945px;
+    height: 370px;
     /* 370/945 */
+}
+
+.gameArea {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .statusBar {
     position: absolute;
+    display: flex;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
     height: 90px;
-    background-image: url('asset/bg/gui.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* 根據實際的 gui.png 調整這個高度 */
     z-index: 10;
     /* 確保 statusBar 會出現在 gameArea 的前面 */
 }
 
-.statusBar {
+.gui {
+    position: absolute;
     display: flex;
+    width: 100%;
+    height: 90px;
+    justify-content: space-between;
+}
+
+#gui_1 {
+    background-image: url('asset/bg/gui_1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 18%;
+}
+
+#gui_2 {
+    background-image: url('asset/bg/gui_2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 18%;
+}
+
+#gui_3 {
+    background-image: url('asset/bg/gui_3.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 18%;
 }
 
 .hearts {
+    position: absolute;
     display: flex;
-    margin-top: 2vw;
+    margin-top: 10px;
     margin-left: 1vw;
-    width: 13.7vw; /* 假設愛心的寬度是遊戲畫面寬度的某個比例 */
+    width: 16%;
+    height: 40px;
     justify-content: space-evenly;
-    align-items: start;
+    justify-self: center;
+    align-items: center;
 }
 
 .heart {
-    width: 3vw; /* 將愛心的寬度設定為視窗寬度的某個比例 */
-    height: 3vw; /* 將愛心的高度設定為視窗寬度的某個比例 */
+    height: 30px;
+    width: 30px;
     background-image: url('asset/heart.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -57,7 +90,8 @@ body {
     position: absolute;
     top: 55%;
     left: 50%;
-    transform: translate(-50%, -50%); /* 使其完全居中 */
+    transform: translate(-50%, -50%);
+    /* 使其完全居中 */
     font-size: 2vw;
     color: white;
     z-index: 11;
@@ -69,17 +103,11 @@ body {
     top: 33%;
     right: 4%;
     /* 或其他合適的位置 */
-    font-size: 2vw; /* 調整這個數值 */
+    font-size: 2vw;
+    /* 調整這個數值 */
     color: white;
     z-index: 11;
     /* 確保在 statusBar 的上面 */
-}
-
-.gameArea {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
 }
 
 .centeredButton {
