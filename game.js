@@ -517,7 +517,18 @@ document.addEventListener('DOMContentLoaded', function () {
         clearInterval(generatePowerUpInterval);
         clearInterval(this.runningAnimation);
         clearTimeout(this.runningAnimationTimeout);
+
         const gameOverDiv = document.querySelector(".gameOver");
         gameOverDiv.innerHTML = `Game Over`;
+
+        // 顯示再玩一次按鈕
+        startButton.style.display = 'block';
+        startButton.style.zIndex = 99;
+        startButton.onclick = resetGame; // 設定按鈕的點擊事件來重置遊戲
     }
+
+    function resetGame() {
+        window.location.reload()
+    }
+
 });
