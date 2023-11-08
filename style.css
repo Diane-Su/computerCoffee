@@ -1,174 +1,165 @@
 body {
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #e6e6e6;
-    margin: 0;
+    font-family: 'Arial', sans-serif;  /* 設定全體字體 */
+    display: flex;  /* 使用彈性盒子布局 */
+    justify-content: center;  /* 水平置中內容 */
+    align-items: center;  /* 垂直置中內容 */
+    height: 100vh;  /* 高度佔滿視窗的100% */
+    background-color: #e6e6e6;  /* 背景顏色設定為淺灰色 */
+    margin: 0;  /* 移除預設的邊距 */
 }
 
 .gameWrapper {
-    position: relative;
-    border: 1px solid black;
-    width: 100%;
-    max-width: 945px;
-    min-width: 600px;
-    height: 370px;
-    /* 370/945 */
+    position: relative;  /* 相對定位 */
+    border: 1px solid black;  /* 黑色實線邊框 */
+    width: 100%;  /* 寬度為容器的100% */
+    max-width: 945px;  /* 最大寬度 */
+    min-width: 600px;  /* 最小寬度 */
+    height: 370px;  /* 固定高度 */
 }
 
 .gameArea {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    position: relative;  /* 相對定位 */
+    width: 100%;  /* 寬度為容器的100% */
+    height: 100%;  /* 高度為容器的100% */
+    overflow: hidden;  /* 隱藏超出部分的內容 */
 }
 
 .statusBar {
-    position: absolute;
-    display: flex;
-    top: 10px;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    min-height: 50px;
-    z-index: 10;
-    /* 確保 statusBar 會出現在 gameArea 的前面 */
+    position: absolute;  /* 絕對定位 */
+    display: flex;  /* 使用彈性盒子布局 */
+    top: 10px;  /* 距離頂部10px */
+    left: 0;  /* 距離左邊0 */
+    width: 100%;  /* 寬度為容器的100% */
+    height: 50px;  /* 高度固定為50px */
+    min-height: 50px;  /* 最小高度為50px */
+    z-index: 10;  /* 層疊次序 */
 }
 
 .gui {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    z-index: -1;
+    position: absolute;  /* 絕對定位 */
+    display: flex;  /* 使用彈性盒子布局 */
+    width: 100%;  /* 寬度為容器的100% */
+    height: 100%;  /* 高度為容器的100% */
+    justify-content: space-between;  /* 內容間距平均分布 */
+    z-index: -1;  /* 層疊次序在最底層 */
 }
 
 .gui * {
-    min-width: 170px;
+    min-width: 170px;  /* 所有子元素的最小寬度 */
 }
 
 #gui_1 {
-    background-image: url('asset/bg/gui_1.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 18%;
+    background-image: url('asset/bg/gui_1.png');  /* 設定圖片 */ 
+    background-repeat: no-repeat;  /* 圖片不重複 */
+    background-size: contain;  /* 圖片完整顯示 */
+    width: 18%;  /* 寬度為容器的18% */
 }
 
 #gui_2 {
-    background-image: url('asset/bg/gui_2.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 18%;
+    background-image: url('asset/bg/gui_2.png');  /* 設定圖片 */
+    background-repeat: no-repeat;  /* 圖片不重複 */
+    background-size: contain;  /* 圖片完整顯示 */
+    width: 18%;  /* 寬度為容器的18% */
 }
 
 #gui_3 {
-    background-image: url('asset/bg/gui_3.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 18%;
+    background-image: url('asset/bg/gui_3.png');  /* 設定圖片 */
+    background-repeat: no-repeat;  /* 圖片不重複 */
+    background-size: contain;  /* 圖片完整顯示 */
+    width: 18%;  /* 寬度為容器的18% */
 }
 
 .info {
-    display: flex;
-    justify-content: space-between;
-    /* width: 100%; */
-    width: calc(100% - 38px);
+    display: flex;  /* 使用彈性盒子布局 */
+    justify-content: space-between;  /* 內容間距平均分布 */
+    width: calc(100% - 38px);  /* 寬度為容器寬度減去38px */
 }
 
 .hearts {
-    display: flex;
-    margin-top: 8px;
-    margin-left: 1vw;
-    width: 133px;
-    height: 40px;
-    min-height: 40px;
-    min-width: 133px;
-    justify-content: space-evenly;
-    justify-self: center;
-    align-items: center;
+    display: flex;  /* 使用彈性盒子布局 */
+    margin-top: 8px;  /* 上邊距8px */
+    margin-left: 1vw;  /* 左邊距1%的視窗寬度 */
+    width: 133px;  /* 寬度固定為133px */
+    height: 40px;  /* 高度固定為40px */
+    min-height: 40px;  /* 最小高度為40px */
+    min-width: 133px;  /* 最小寬度為133px */
+    justify-content: space-evenly;  /* 內容間距均等分布 */
+    justify-self: center;  /* 自身水平置中 */
+    align-items: center;  /* 子元素垂直置中 */
 }
 
 .heart {
-    height: 30px;
-    width: 30px;
-    background-image: url('asset/heart.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
+    height: 30px;  /* 高度固定為30px */
+    width: 30px;  /* 寬度固定為30px */
+    background-image: url('asset/heart.png');  /* 設定愛心圖片 */
+    background-size: contain;  /* 愛心圖片完整顯示 */
+    background-repeat: no-repeat;  /* 愛心圖片不重複 */
+    display: inline-block;  /* 顯示為行內塊元素 */
+} 
 
 .score {
-    top: 28%;
-    font-size: 23px;
-    padding-top: 8px;
-    color: white;
-    z-index: 11;
+    top: 28%; 
+    font-size: 23px;  /* 字體大小為23px */
+    padding-top: 8px;  /* 上邊距8px */
+    color: white;  /* 字體顏色為白色 */
+    z-index: 11;  /* 層疊次序 */
 }
 
 .powerUpCount {
     top: 10%;
     right: 2%;
-    padding-top: 8px;
-    font-size: 23px;
-    color: white;
-    z-index: 11;
+    padding-top: 8px;  /* 上邊距8px */
+    font-size: 23px;  /* 字體大小為23px */
+    color: white;  /* 字體顏色為白色 */
+    z-index: 11;  /* 層疊次序 */
 }
 
 .centeredButton {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    transition: 0.3s;
-    /* 根據您的圖片大小調整以下兩行 */
-    width: 150px;
-    /* 或其他您希望的寬度 */
-    height: auto;
-    /* 保持圖片的比例 */
+    position: absolute;  /* 絕對定位 */
+    top: 50%;  /* 垂直置中 */
+    left: 50%;  /* 水平置中 */
+    transform: translate(-50%, -50%);  /* 位移修正，確保準確置中 */
+    cursor: pointer;  /* 鼠標樣式為指針 */
+    transition: 0.3s;  /* 過渡效果0.3秒 */
+    width: 150px;  /* 寬度為150px */
+    height: auto;  /* 高度自動 */
 }
 
 .centeredButton:hover {
-    opacity: 0.8;
-    /* 為鼠標懸停在圖片上時增加一個淡出效果 */
-}
+    opacity: 0.8;  /* 滑鼠懸停時透明度降低 */
+}  
 
 .hidden {
-    display: none;
+    display: none;  /* 不顯示元素 */
 }
 
-.retryButton {
-    display: none;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    transition: 0.3s;
-    width: 150px;
-    height: auto;
-    z-index: 9999;
-    /* 新增這行，確保按鈕在最上層 */
+.retryButton { 
+    display: none;  /* 預設不顯示 */
+    position: absolute;  /* 絕對定位 */
+    top: 70%;  /* 距離頂部70% */
+    left: 50%;  /* 水平置中 */
+    transform: translate(-50%, -50%);  /* 位移修正，確保準確置中 */
+    cursor: pointer;  /* 鼠標樣式為指針 */
+    transition: 0.3s;  /* 過渡效果0.3秒 */
+    width: 150px;  /* 寬度為150px */
+    height: auto;  /* 高度自動 */
+    z-index: 9999;  /* 層疊次序極高，確保顯示於最上層 */
 }
 
 .retryButton:hover {
-    opacity: 0.8;
+    opacity: 0.8;   /* 滑鼠懸停時透明度降低 */
 }
 
 .gameOver {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 40px;
-    color: white;
-    z-index: 20;
-    /* 確保在所有其他元素之上 */
+    position: absolute;  /* 絕對定位 */
+    top: 30%;  /* 距離頂部30% */
+    left: 50%;   /* 水平置中 */
+    transform: translate(-50%, -50%);  /* 位移修正，確保準確置中 */
+    font-size: 40px;  /* 字體大小為40px */
+    color: white;  /* 字體顏色為白色 */
+    z-index: 20;  /* 層疊次序 */
 }
 
 .transparent {
-    opacity: 0.5;
+    opacity: 0.5;  /* 透明度為50% */
 }

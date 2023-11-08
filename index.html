@@ -1,38 +1,44 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!DOCTYPE html>  <!-- 定義文檔類型，這行告訴瀏覽器這是 HTML5 文檔 -->
+<html lang="zh-TW">  <!-- 根元素，設定語言為繁體中文 -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Di-Art Game</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="game.js" defer></script>
+<head>  <!-- 包含文檔的元（meta）數據 -->
+    <meta charset="UTF-8">  <!-- 設定文件的字符編碼為 UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- 為移動設備設定視口 -->
+    <title>Di-Art Game</title>  <!-- 指定網頁標題 -->
+    <link rel="stylesheet" href="style.css">  <!-- 鏈接外部 CSS 樣式表 -->
+    <script src="game.js" defer></script>  <!-- 加載外部 JavaScript 文件，defer 屬性會延遲腳本的執行直到頁面解析完畢 -->
 </head>
 
-<body>
-    <div class="gameWrapper">
-        <div id="gameArea" class="gameArea">
+<body>  <!-- 包含文檔的內容 -->
+    <div class="gameWrapper">  <!-- 遊戲的外層包裝，用於布局或樣式設定 -->
+        <div id="gameArea" class="gameArea">  <!-- 遊戲區域的容器 -->
+            <!-- 遊戲開始按鈕，點擊時開始遊戲 -->
             <img id="startGame" class="centeredButton" src="./asset/bg/7162657.png" alt="Start Game">
+            <!-- 遊戲重試按鈕，點擊時重新開始遊戲 -->
             <img id="retryGame" class="retryButton" src="./asset/bg/7162657.png" alt="Retry Game">
-            <div class="statusBar">
-                <div class="gui">
-                    <div id="gui_1"></div>
-                    <div id="gui_2"></div>
-                    <div id="gui_3"></div>
+            <div class="statusBar">  <!-- 遊戲的狀態欄，顯示 GUI 和遊戲資訊 -->
+                <div class="gui">  <!-- GUI 容器 -->
+                    <div id="gui_1"></div>  <!-- GUI 元素 -->
+                    <div id="gui_2"></div>  <!-- GUI 元素 -->
+                    <div id="gui_3"></div>  <!-- GUI 元素 -->
                 </div>
-                <div class="info">
-                    <div class="hearts">
-                        <div class="heart"></div>
-                        <div class="heart"></div>
-                        <div class="heart"></div>
+                <div class="info">  <!-- 遊戲資訊容器，顯示生命值和分數 -->
+                    <div class="hearts">  <!-- 生命值的容器 --> 
+                        <div class="heart"></div>  <!-- 單個生命值 -->
+                        <div class="heart"></div>  <!-- 單個生命值 -->
+                        <div class="heart"></div>  <!-- 單個生命值 -->
                     </div>
+                    <!-- 顯示玩家分數 -->
                     <div class="score">分數: <span id="playerScore">0</span></div>
+                    <!-- 顯示補充包數量 -->
                     <div class="powerUpCount">補充包: <span id="powerUpCounter">0</span></div>
                 </div>
             </div>
+            <!-- 遊戲結束時顯示的元素，預設為隱藏 -->
             <div class="gameOver hidden">Game Over</div>
         </div>
     </div>
+    <!-- 背景音樂元素 -->
     <audio id="bgMusic1" preload="auto" loop>
         <source src="./asset/sounds/game_bgm.mp3" type="audio/mpeg">
     </audio>
@@ -45,6 +51,7 @@
     <audio id="bgMusic4" preload="auto" loop>
         <source src="./asset/sounds/game_bgm.wav" type="audio/mpeg">
     </audio>
+     <!-- 遊戲音效元素 -->
     <audio id="jumpSound">
         <source src="./asset/sounds/jump.wav" type="audio/mpeg">
     </audio>
